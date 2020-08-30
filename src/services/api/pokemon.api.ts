@@ -5,9 +5,18 @@ import PaginatedPokemonEntity, {
 import PokemonEntity, { PokemonResponse } from '../../models/pokemon.entity';
 
 const BASE_URL = 'pokemon';
+const LIMIT = 20;
+let offset = 0;
 
 const listPokemon = async (): Promise<PaginatedPokemonEntity> => {
-  const response = await baseAPI.get<PaginatedPokemonResponse>(BASE_URL);
+  const response = await baseAPI.get<PaginatedPokemonResponse>(BASE_URL, {
+    params: {
+      limit: LIMIT,
+      offset,
+    },
+  });
+  offset += LIMIT;
+
   return new PaginatedPokemonEntity(response);
 };
 
