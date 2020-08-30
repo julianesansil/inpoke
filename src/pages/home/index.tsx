@@ -7,14 +7,17 @@ import React, {
 import InfiniteScroll from 'react-infinite-scroller';
 
 import { pokemonAPI } from '../../services/api/pokemon.api';
+import { typeAPI } from '../../services/api/type.api';
+import PaginatedResponseEntity from '../../models/paginated-response.entity';
 import PokemonEntity from '../../models/pokemon.entity';
 
 let hasMore = true;
 
 const Home: FunctionComponent = () => {
   const [pokemons, setPokemons] = useState<PokemonEntity[]>([]);
+  const [types, setTypes] = useState<PaginatedResponseEntity['results']>([]);
 
-  const [isSearch, setIsSearch] = useState<boolean>(false);
+  const [isFilterOn, setIsFilterOn] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>();
 
   const listPokemon = async () => {
@@ -35,19 +38,36 @@ const Home: FunctionComponent = () => {
     }
   };
 
-  useEffect(() => {
-    listPokemon();
-  }, []);
-
-  useEffect(() => {
-    if (!searchText?.trim()) {
-      setIsSearch(false);
+  const listType = async () => {
+    try {
+      const typeList = await typeAPI.listType();
+      setTypes(typeList.results);
+    } catch (error) {
+      console.log('error: ', error);
     }
-  }, [searchText]);
+  };
+
+  const listPokemonByType = async (typeId: number) => {
+    setIsFilterOn(true);
+    const pokemonPromises: Promise<PokemonEntity>[] = [];
+
+    const pokemonList = await typeAPI.listPokemonByType(typeId);
+    pokemonList.pokemons.forEach(
+      pokemon =>
+        pokemon.id && pokemonPromises.push(pokemonAPI.getPokemon(pokemon.id)),
+    );
+
+    try {
+      const pokemonData = await Promise.all(pokemonPromises);
+      setPokemons([...pokemons, ...pokemonData]);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
 
   const searchPokemon = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSearch(true);
+    setIsFilterOn(true);
 
     if (searchText) {
       try {
@@ -58,6 +78,17 @@ const Home: FunctionComponent = () => {
       }
     }
   };
+
+  useEffect(() => {
+    listPokemonByType(1);
+    listType();
+  }, []);
+
+  useEffect(() => {
+    if (!searchText?.trim()) {
+      setIsFilterOn(false);
+    }
+  }, [searchText]);
 
   return (
     <div>
@@ -71,10 +102,23 @@ const Home: FunctionComponent = () => {
         <button type="submit">Search</button>
       </form>
 
+      {types.map(
+        type =>
+          !!type.id && (
+            <div key={type.id}>
+              <p>{type.name}</p>
+            </div>
+          ),
+      )}
+
+      <p>
+        aqui:
+        {JSON.stringify(isFilterOn)}
+      </p>
       <InfiniteScroll
         pageStart={0}
         loadMore={listPokemon}
-        hasMore={isSearch ? false : hasMore}
+        hasMore={isFilterOn ? false : hasMore}
         loader={<h4 key={0}>Loading...</h4>}
       >
         {pokemons.map(pokemon => (

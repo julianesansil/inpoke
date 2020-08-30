@@ -1,15 +1,16 @@
 import { baseAPI } from './base.api';
-import PaginatedPokemonEntity, {
-  PaginatedPokemonResponse,
-} from '../../models/paginated-pokemon.entity';
+import PaginatedResponseEntity, {
+  PaginatedResponse,
+} from '../../models/paginated-response.entity';
 import PokemonEntity, { PokemonResponse } from '../../models/pokemon.entity';
+import ENTITY from '../../models/entity.enum';
 
 const BASE_URL = 'pokemon';
 const LIMIT = 20;
 let offset = 0;
 
-const listPokemon = async (): Promise<PaginatedPokemonEntity> => {
-  const response = await baseAPI.get<PaginatedPokemonResponse>(BASE_URL, {
+const listPokemon = async (): Promise<PaginatedResponseEntity> => {
+  const response = await baseAPI.get<PaginatedResponse>(BASE_URL, {
     params: {
       limit: LIMIT,
       offset,
@@ -17,11 +18,13 @@ const listPokemon = async (): Promise<PaginatedPokemonEntity> => {
   });
   offset += LIMIT;
 
-  return new PaginatedPokemonEntity(response);
+  return new PaginatedResponseEntity(response, ENTITY.POKEMON);
 };
 
-const getPokemon = async (key: number | string): Promise<PokemonEntity> => {
-  const url = `${BASE_URL}/${key}`;
+const getPokemon = async (
+  pokemonKey: number | string,
+): Promise<PokemonEntity> => {
+  const url = `${BASE_URL}/${pokemonKey}`;
   const response = await baseAPI.get<PokemonResponse>(url);
   return new PokemonEntity(response);
 };
