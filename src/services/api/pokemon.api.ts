@@ -1,14 +1,20 @@
-import api from './base.api';
+import { baseAPI } from './base.api';
+import PaginatedPokemonEntity, {
+  PaginatedPokemonResponse,
+} from '../../models/paginated-pokemon.entity';
+import PokemonEntity, { PokemonResponse } from '../../models/pokemon.entity';
 
 const BASE_URL = 'pokemon';
 
-const listPokemon = () => {
-  return api.get(BASE_URL);
+const listPokemon = async (): Promise<PaginatedPokemonEntity> => {
+  const response = await baseAPI.get<PaginatedPokemonResponse>(BASE_URL);
+  return new PaginatedPokemonEntity(response);
 };
 
-const getPokemon = (id: number) => {
+const getPokemon = async (id: number): Promise<PokemonEntity> => {
   const url = `${BASE_URL}/${id}`;
-  return api.get(url);
+  const response = await baseAPI.get<PokemonResponse>(url);
+  return new PokemonEntity(response);
 };
 
 export const pokemonAPI = {
