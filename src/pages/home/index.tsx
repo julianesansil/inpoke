@@ -1,23 +1,38 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { pokemonAPI } from '../../services/api/pokemon.api';
+import PokemonEntity from '../../models/pokemon.entity';
 
 const Home: FunctionComponent = () => {
-  const listPokemon = async () => {
-    const pokemons = await pokemonAPI.listPokemon();
-    console.log(pokemons);
-    const { id } = pokemons.results[0];
+  const [pokemons, setPokemons] = useState<PokemonEntity[]>([]);
 
-    if (id) {
-      const pokemon = await pokemonAPI.getPokemon(id);
-      console.log(pokemon);
-    }
+  const listPokemon = async () => {
+    const pokemonPromises: Promise<PokemonEntity>[] = [];
+
+    const pokemonsReponse = await pokemonAPI.listPokemon();
+    pokemonsReponse.results.forEach(result => {
+      if (result.id) {
+        pokemonPromises.push(pokemonAPI.getPokemon(result.id));
+      }
+    });
+
+    setPokemons(await Promise.all(pokemonPromises));
   };
 
   useEffect(() => {
     listPokemon();
-  });
+  }, []);
 
-  return <h1>InPoke</h1>;
+  return (
+    <div>
+      {pokemons.map(pokemon => (
+        <div key={pokemon.id}>
+          <h1>{pokemon.name}</h1>
+          <p>{pokemon.baseExperience}</p>
+          <p>{pokemon.types.join(', ')}</p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Home;

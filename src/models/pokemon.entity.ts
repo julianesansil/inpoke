@@ -3,7 +3,7 @@
 export interface PokemonResponse {
   id: number;
   name: string;
-  baseExperience: number;
+  base_experience: number;
 
   abilities: {
     ability: {
@@ -53,7 +53,7 @@ class PokemonEntity {
   constructor(response: PokemonResponse) {
     this.id = response.id;
     this.name = response.name;
-    this.baseExperience = response.baseExperience;
+    this.baseExperience = response.base_experience;
     this.imageURL = this.getImageURL(response.id);
 
     this.abilities = response.abilities.map(abilityResponse => {
