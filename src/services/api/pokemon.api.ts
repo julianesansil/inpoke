@@ -20,8 +20,8 @@ const listPokemon = async (): Promise<PaginatedPokemonEntity> => {
   return new PaginatedPokemonEntity(response);
 };
 
-const getPokemon = async (id: number): Promise<PokemonEntity> => {
-  const url = `${BASE_URL}/${id}`;
+const getPokemon = async (key: number | string): Promise<PokemonEntity> => {
+  const url = `${BASE_URL}/${key}`;
   const response = await baseAPI.get<PokemonResponse>(url);
   return new PokemonEntity(response);
 };
