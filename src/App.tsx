@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import Home from './pages/home';
 
 const App: FunctionComponent = () => {
-  return <h1>InPoke</h1>;
+  return <Home />;
 };
 
 export default App;
