@@ -80,7 +80,7 @@ const Home: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    listPokemonByType(1);
+    listPokemon();
     listType();
   }, []);
 
