@@ -8,6 +8,9 @@ import { typeAPI } from '../../services/api/type.api';
 
 import Grid from '../../components/grid.comp';
 import FlipCard from '../../components/flip-card.comp';
+
+import { SCForm, SCButton, SCInput } from './components/home.style';
+import Header from './components/header.comp';
 import CardFace from './components/card-face.comp';
 import CardBackface from './components/card-backface.comp';
 
@@ -64,43 +67,34 @@ const Home: React.FC = () => {
   //   }
   // };
 
-  // const searchPokemon = async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setIsFilterOn(true);
+  const searchPokemon = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsFilterOn(true);
 
-  //   if (searchText) {
-  //     try {
-  //       const pokemonData = await pokemonAPI.getPokemon(searchText);
-  //       setPokemons([pokemonData]);
-  //     } catch (error) {
-  //       console.log('error: ', error);
-  //     }
-  //   }
-  // };
+    if (searchText) {
+      try {
+        const pokemonData = await pokemonAPI.getPokemon(searchText);
+        setPokemons([pokemonData]);
+      } catch (error) {
+        console.log('error: ', error);
+      }
+    }
+  };
 
   useEffect(() => {
     listPokemon();
     // listType();
   }, []);
 
-  // useEffect(() => {
-  //   if (!searchText?.trim()) {
-  //     setIsFilterOn(false);
-  //   }
-  // }, [searchText]);
+  useEffect(() => {
+    if (!searchText?.trim()) {
+      setIsFilterOn(false);
+    }
+  }, [searchText]);
 
   return (
     <div>
-      {/* <form onSubmit={searchPokemon}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Digite o texto"
-          onChange={e => setSearchText(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-
+      {/*
       {types.map(
         type =>
           !!type.id && (
@@ -110,22 +104,35 @@ const Home: React.FC = () => {
           ),
       )} */}
 
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={listPokemon}
-        hasMore={isFilterOn ? false : hasMore}
-        loader={<h4 key={0}>Loading...</h4>}
-      >
-        <Grid>
-          {pokemons.map(pokemon => (
-            <FlipCard
-              key={pokemon.id}
-              cardFaceComponent={<CardFace pokemon={pokemon} />}
-              cardBackfaceComponent={<CardBackface pokemon={pokemon} />}
-            />
-          ))}
-        </Grid>
-      </InfiniteScroll>
+      <Header>
+        <SCForm onSubmit={searchPokemon}>
+          <SCInput
+            type="text"
+            placeholder="Who is that pokémon?"
+            onChange={e => setSearchText(e.target.value)}
+          />
+          <SCButton type="submit">Catch</SCButton>
+        </SCForm>
+      </Header>
+
+      <main>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={listPokemon}
+          hasMore={isFilterOn ? false : hasMore}
+          loader={<h4 key={0}>Loading...</h4>}
+        >
+          <Grid>
+            {pokemons.map(pokemon => (
+              <FlipCard
+                key={pokemon.id}
+                cardFaceComponent={<CardFace pokemon={pokemon} />}
+                cardBackfaceComponent={<CardBackface pokemon={pokemon} />}
+              />
+            ))}
+          </Grid>
+        </InfiniteScroll>
+      </main>
     </div>
   );
 };

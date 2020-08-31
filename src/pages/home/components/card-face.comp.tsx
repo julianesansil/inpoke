@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import PokemonEntity from '../../../models/pokemon.entity';
-import SCTag from '../../../components/sc-tag.comp';
+import SCTag from '../../../components/tag.style';
 import TAG_COLORS from '../../../config/tag-colors';
 
 interface CardFaceProps {
