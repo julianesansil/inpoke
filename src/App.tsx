@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import Home from './pages/home';
 import GlobalStyle from './global-styles';
 
-const App: FunctionComponent = () => {
+const App: React.FC = () => {
   return (
     <>
       <Home />

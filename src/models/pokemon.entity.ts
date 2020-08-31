@@ -32,9 +32,9 @@ class PokemonEntity {
 
   name: string;
 
-  baseExperience: number;
-
   imageURL: string;
+
+  hp = 0;
 
   abilities: {
     name: string;
@@ -45,7 +45,7 @@ class PokemonEntity {
 
   stats: {
     name: string;
-    percentage: number;
+    value: number;
   }[];
 
   types: string[];
@@ -53,7 +53,6 @@ class PokemonEntity {
   constructor(response: PokemonResponse) {
     this.id = response.id;
     this.name = response.name;
-    this.baseExperience = response.base_experience;
     this.imageURL = this.getImageURL(response.id);
 
     this.abilities = response.abilities.map(abilityResponse => {
@@ -66,9 +65,13 @@ class PokemonEntity {
     this.forms = response.forms.map(formResponse => formResponse?.name);
 
     this.stats = response.stats.map(statResponse => {
+      if (statResponse.stat.name === 'hp') {
+        this.hp = statResponse.base_stat;
+      }
+
       return {
         name: statResponse?.stat?.name,
-        percentage: statResponse?.base_stat,
+        value: statResponse?.base_stat,
       };
     });
 
