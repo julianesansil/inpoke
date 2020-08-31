@@ -2,6 +2,8 @@
 
 Aplicativo de listagem e busca de Pókemons desenvolvido em [ReactJS](https://pt-br.reactjs.org/).
 
+Versão de produção publicada em: https://julianesansil.github.io/inpoke/
+
 ## Sumário
 
 - [InPoke\_](#inpoke_)
@@ -9,7 +11,6 @@ Aplicativo de listagem e busca de Pókemons desenvolvido em [ReactJS](https://pt
   - [Checklist](#checklist)
     - [Requisitos Mínimos](#requisitos-mínimos)
     - [Requisitos Extras](#requisitos-extras)
-  - [Release](#release)
   - [Run](#run)
   - [Dependências do projeto](#dependências-do-projeto)
   - [Outras informações](#outras-informações)
@@ -30,12 +31,6 @@ Aplicativo de listagem e busca de Pókemons desenvolvido em [ReactJS](https://pt
 - [x] Renderizar imagens dos pókemons, utilizando a [assets.pokemon](https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png).
 - [x] Fazer paginação da lista de pókemons.
 - [x] Aplicar responsividade.
-
-<a name="release"></a>
-
-## Release
-
-Versão de produção publicada em: https://julianesansil.github.io/inpoke/
 
 <a name="run"></a>
 
