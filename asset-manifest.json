@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/inpoke/static/js/main.cbd1e044.chunk.js",
+    "main.js.map": "/inpoke/static/js/main.cbd1e044.chunk.js.map",
+    "runtime-main.js": "/inpoke/static/js/runtime-main.3785f0c4.js",
+    "runtime-main.js.map": "/inpoke/static/js/runtime-main.3785f0c4.js.map",
+    "static/js/2.8ab4d1c8.chunk.js": "/inpoke/static/js/2.8ab4d1c8.chunk.js",
+    "static/js/2.8ab4d1c8.chunk.js.map": "/inpoke/static/js/2.8ab4d1c8.chunk.js.map",
+    "index.html": "/inpoke/index.html",
+    "precache-manifest.fbfdcc1d49ca13b2d46cd4757ad325fa.js": "/inpoke/precache-manifest.fbfdcc1d49ca13b2d46cd4757ad325fa.js",
+    "service-worker.js": "/inpoke/service-worker.js",
+    "static/js/2.8ab4d1c8.chunk.js.LICENSE.txt": "/inpoke/static/js/2.8ab4d1c8.chunk.js.LICENSE.txt",
+    "static/media/Montserrat-Bold.ttf": "/inpoke/static/media/Montserrat-Bold.ade91f47.ttf",
+    "static/media/Montserrat-Regular.ttf": "/inpoke/static/media/Montserrat-Regular.ee653992.ttf",
+    "static/media/Pokemon-Solid.ttf": "/inpoke/static/media/Pokemon-Solid.36d26dbc.ttf",
+    "static/media/pokebola.svg": "/inpoke/static/media/pokebola.6b4ffa55.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3785f0c4.js",
+    "static/js/2.8ab4d1c8.chunk.js",
+    "static/js/main.cbd1e044.chunk.js"
+  ]
+}
