@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 
 const SCContainer = styled.header`
-  padding: 50px 0;
+  padding: 50px 0 70px;
   text-align: center;
 `;
 
@@ -23,7 +23,7 @@ const SCSubtitle = styled.h2`
 `;
 
 const SCChildren = styled.div`
-  margin-top: 40px;
+  margin-top: 36px;
 `;
 
 const HeaderTitle: React.FC<HeaderProps> = (props: HeaderProps) => {

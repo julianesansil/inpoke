@@ -16,7 +16,7 @@ const SCContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 40px 0;
+  padding-top: 50px;
 `;
 
 const SCImage = styled.img`
