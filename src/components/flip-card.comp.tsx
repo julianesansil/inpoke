@@ -49,7 +49,7 @@ const SCFace = styled(SCCardBody)`
 `;
 
 const SCBackface = styled(SCCardBody)`
-  padding: 14px;
+  padding: 20px 14px;
   background-color: #fff;
   border-radius: 10px;
 

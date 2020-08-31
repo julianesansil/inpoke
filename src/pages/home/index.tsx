@@ -6,8 +6,9 @@ import PokemonEntity from '../../models/pokemon.entity';
 import { pokemonAPI } from '../../services/api/pokemon.api';
 import { typeAPI } from '../../services/api/type.api';
 
-import CardFace from './components/card-face.comp';
+import Grid from '../../components/grid.comp';
 import FlipCard from '../../components/flip-card.comp';
+import CardFace from './components/card-face.comp';
 import CardBackface from './components/card-backface.comp';
 
 const Home: React.FC = () => {
@@ -115,14 +116,15 @@ const Home: React.FC = () => {
         hasMore={isFilterOn ? false : hasMore}
         loader={<h4 key={0}>Loading...</h4>}
       >
-        {pokemons.map(pokemon => (
-          <FlipCard
-            key={pokemon.id}
-            cardFaceComponent={<CardFace pokemon={pokemon} />}
-            // cardFaceComponent={<CardBackface pokemon={pokemon} />}
-            cardBackfaceComponent={<CardBackface pokemon={pokemon} />}
-          />
-        ))}
+        <Grid>
+          {pokemons.map(pokemon => (
+            <FlipCard
+              key={pokemon.id}
+              cardFaceComponent={<CardFace pokemon={pokemon} />}
+              cardBackfaceComponent={<CardBackface pokemon={pokemon} />}
+            />
+          ))}
+        </Grid>
       </InfiniteScroll>
     </div>
   );

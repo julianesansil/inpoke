@@ -74,6 +74,7 @@ const CardBackface: React.FC<CardBackfaceProps> = (
 
         <tr>
           <SCDetailItem>Abilities:</SCDetailItem>
+
           <SCDetailItem>
             {pokemon.abilities.map((ability, index) => {
               return `${ability.name} ${
@@ -88,6 +89,7 @@ const CardBackface: React.FC<CardBackfaceProps> = (
         {pokemon.stats.map(stat => (
           <tr>
             <SCStatItem>{stat.name}</SCStatItem>
+
             <SCStatItem>
               <SCProgress value={stat.value} max="100" />
             </SCStatItem>
