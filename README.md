@@ -1,44 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# InPoke_
 
-## Available Scripts
+Aplicativo de listagem e busca de Pókemons desenvolvido em [ReactJS](https://pt-br.reactjs.org/).
 
-In the project directory, you can run:
+## Sumário
 
-### `yarn start`
+  - [Sumário](#sumário)
+  - [Checklist](#checklist)
+  - [Release](#release)
+  - [Run](#run)
+  - [Dependências do projeto](#dependências-do-projeto)
+  - [Outras informações](#outras-informações)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<a name="checklist"></a>
 
-### `yarn test`
+## Checklist
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Requisitos Mínimos
 
-### `yarn build`
+- [x] Listar os pókemons utilizando a [PokeAPI](https://pokeapi.co/).
+- [x] Mostrar detalhes dos pókemons, em específico: `abilities` e `forms`.
+- [x] Mostrar mais pókemons do que a primeira página da API disponibiliza.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Requisitos Extras
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [x] Buscar pókemons por nome ou id.
+- [x] Renderizar imagens dos pókemons, utilizando a [assets.pokemon](https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png).
+- [x] Fazer paginação da lista de pókemons.
+- [x] Aplicar responsividade.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+<a name="release"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Release
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<a name="run"></a>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Run
 
-## Learn More
+- Pré-requisito: ter o node/npm previamente instalado
+- Na pasta do projeto, rodar:
+  - `yarn` ou `npm install` para instalar dependências
+  - `yarn start` ou `npm run start` para rodar o projeto localmente
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a name="dependencias"></a>
+
+## Dependências do projeto
+
+- ESLint: https://eslint.org/
+- Prettier: https://prettier.io/
+- TypeScript: https://www.typescriptlang.org/
+- Axios: https://github.com/axios/axios
+- Styled Components: https://www.styled-components.com/
+
+
+<a name="outras-informacoes"></a>
+
+## Outras informações
+
+- Documentação da PokeAPI: https://pokeapi.co/docs/v2
+- Ícones retirados de https://www.flaticon.com/

@@ -6,7 +6,7 @@ import PokemonEntity, { PokemonResponse } from '../../models/pokemon.entity';
 import ENTITY from '../../models/entity.enum';
 
 const BASE_URL = 'pokemon';
-const LIMIT = 20;
+const LIMIT = 24;
 let offset = 0;
 
 const listPokemon = async (): Promise<PaginatedResponseEntity> => {
