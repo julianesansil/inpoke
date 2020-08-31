@@ -24,7 +24,7 @@ const listPokemon = async (): Promise<PaginatedResponseEntity> => {
 const getPokemon = async (
   pokemonKey: number | string,
 ): Promise<PokemonEntity> => {
-  const url = `${BASE_URL}/${pokemonKey}`;
+  const url = `${BASE_URL}/${String(pokemonKey).toLowerCase()}`;
   const response = await baseAPI.get<PokemonResponse>(url);
   return new PokemonEntity(response);
 };
