@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import SharedSCButton from '../../../components/button.style';
 import SharedSCInput from '../../../components/input.style';
 
+export const SCMain = styled.main``;
+
 export const SCForm = styled.form`
   margin-left: auto;
   margin-right: auto;

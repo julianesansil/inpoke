@@ -67,34 +67,42 @@ const CardBackface: React.FC<CardBackfaceProps> = (
       <SCTitle>{pokemon.name}</SCTitle>
 
       <SCDetailsTable>
-        <tr>
-          <SCDetailItem>Forms:</SCDetailItem>
-          <SCDetailItem>{pokemon.forms}</SCDetailItem>
-        </tr>
+        <tbody>
+          <tr>
+            <SCDetailItem>Forms:</SCDetailItem>
+            <SCDetailItem>{pokemon.forms}</SCDetailItem>
+          </tr>
 
-        <tr>
-          <SCDetailItem>Abilities:</SCDetailItem>
+          <tr>
+            <SCDetailItem>Abilities:</SCDetailItem>
 
-          <SCDetailItem>
-            {pokemon.abilities.map((ability, index) => {
-              return `${ability.name} ${
-                index < pokemon.abilities.length - 1 ? ' / ' : ''
-              }`;
-            })}
-          </SCDetailItem>
-        </tr>
+            <SCDetailItem>
+              {pokemon.abilities.map((ability, index) => {
+                return (
+                  <p key={ability.name}>
+                    {`${ability.name} ${
+                      index < pokemon.abilities.length - 1 ? ' / ' : ''
+                    }`}
+                  </p>
+                );
+              })}
+            </SCDetailItem>
+          </tr>
+        </tbody>
       </SCDetailsTable>
 
       <SCStatsTable>
-        {pokemon.stats.map(stat => (
-          <tr>
-            <SCStatItem>{stat.name}</SCStatItem>
+        <tbody>
+          {pokemon.stats.map(stat => (
+            <tr key={stat.name}>
+              <SCStatItem>{stat.name}</SCStatItem>
 
-            <SCStatItem>
-              <SCProgress value={stat.value} max="100" />
-            </SCStatItem>
-          </tr>
-        ))}
+              <SCStatItem>
+                <SCProgress value={stat.value} max="100" />
+              </SCStatItem>
+            </tr>
+          ))}
+        </tbody>
       </SCStatsTable>
     </SCContainer>
   );

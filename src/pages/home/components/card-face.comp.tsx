@@ -29,7 +29,7 @@ const SCTitle = styled.p`
   text-transform: capitalize;
 `;
 
-const SCTags = styled.p`
+const SCTags = styled.div`
   margin-top: 10px;
 `;
 
