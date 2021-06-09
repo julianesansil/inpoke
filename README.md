@@ -6,8 +6,6 @@ Versão de produção publicada em: https://julianesansil.github.io/inpoke/
 
 ## Sumário
 
-- [InPoke\_](#inpoke_)
-  - [Sumário](#sumário)
   - [Checklist](#checklist)
     - [Requisitos Mínimos](#requisitos-mínimos)
     - [Requisitos Extras](#requisitos-extras)
